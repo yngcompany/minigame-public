@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title></title>
+
+    <link rel="stylesheet" href="css/game01.css" />
+</head>
+<body>
+    <div id="wrap">
+        <div id="main" class="show">
+            <div class="title"><span>미니게임: 채소 수확하기</span></div>
+            <div class="wrap-btn">
+                <button class="btn-howToPlay"><span>놀이 방법</span></button>
+                <button class="btn-gameStart"><span>시작하기</span></button>
+            </div>
+
+            <div class="guide">
+                <ul>
+                    <li class="desc"> - 놀이방법 가이드 음성 안내 01입니다. </li>
+                    <li class="desc"> - 놀이방법 가이드 음성 안내 02입니다. </li>
+                    <li class="desc"> - 놀이방법 가이드 음성 안내 03입니다. </li>
+                    <li class="desc"> - 놀이방법 가이드 음성 안내 04입니다. </li>
+                </ul>
+                <button class="btn-close"> 닫기 </button>
+            </div>
+        </div>
+
+        <!-- 시작하기 : 채소 농장의 하루 -->
+        <div class="wrap-farm">
+            <button class="btn-close"> 닫기 </button>
+
+            <div class="wrap-vegetables">
+                <!-- 당근(땅) -->
+                <div class="vegetable">
+                    <div class="obj carrot"></div>
+                    <div class="ground"></div>
+                    <div class="status"></div>
+                </div>
+
+                <!-- 토마토(줄기) -->
+                <div class="vegetable">
+                    <div class="obj tomato"></div>
+                    <div class="plant"></div>
+                    <div class="status"></div>
+                </div>
+
+                <!-- 양파(땅) -->
+                <div class="vegetable">
+                    <div class="obj onion"></div>
+                    <div class="ground"></div>
+                    <div class="status"></div>
+                </div>
+
+                <!-- 오이(줄기) -->
+                <div class="vegetable">
+                    <div class="obj cucumber"></div>
+                    <div class="plant"></div>
+                    <div class="status"></div>
+                </div>
+
+                <!-- 무(땅) -->
+                <div class="vegetable">
+                    <div class="obj radish"></div>
+                    <div class="ground"></div>
+                    <div class="status"></div>
+                </div>
+
+                <!-- 배추(땅) -->
+                <div class="vegetable">
+                    <div class="obj cabbage"></div>
+                    <div class="ground"></div>
+                    <div class="status"></div>
+                </div>
+
+                <!-- 가지(줄기) -->
+                <div class="vegetable">
+                    <div class="obj eggplant"></div>
+                    <div class="plant"></div>
+                    <div class="status"></div>
+                </div>
+
+                <!-- 비트(땅) -->
+                <div class="vegetable">
+                    <div class="obj beet"></div>
+                    <div class="ground"></div>
+                    <div class="status"></div>
+                </div>
+
+                <!-- 파프리카(줄기) -->
+                <div class="vegetable">
+                    <div class="obj paprika"></div>
+                    <div class="plant"></div>
+                    <div class="status"></div>
+                </div>
+
+                <!-- 고추(줄기) -->
+                <div class="vegetable">
+                    <div class="obj pepper"></div>
+                    <div class="plant"></div>
+                    <div class="status"></div>
+                </div>
+            </div>
+
+            <div class="wrap-stone">
+                <div class="cat"></div>
+
+                <div class="stone">
+                    <div class="obj"></div>
+                </div>
+                <div class="stone">
+                    <div class="obj"></div>
+                </div>
+                <div class="stone">
+                    <div class="obj"></div>
+                </div>
+                <div class="stone">
+                    <div class="obj"></div>
+                </div>
+                <div class="stone">
+                    <div class="obj"></div>
+                </div>
+                <div class="stone">
+                    <div class="obj"></div>
+                </div>
+                <div class="stone">
+                    <div class="obj"></div>
+                </div>
+                <div class="stone">
+                    <div class="obj"></div>
+                </div>
+                <div class="stone">
+                    <div class="obj"></div>
+                </div>
+                <div class="stone">
+                    <div class="obj"></div>
+                </div>
+            </div>
+
+            <div class="wrap-quiz">
+                <div class="area-question">
+                    <span class="badge-num"></span>
+                    <p class="question">1+1은 2이다.</p>
+                    <div class="timer"></div>
+                </div>
+                <div class="wrap-btn">
+                    <button class="btn-answer-right"><span>O</span></button>
+                    <button class="btn-answer-wrong"><span>X</span></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 결과 페이지 : 재도전 없이 한번에 다 맞았을때 -->
+        <div class="wrap-result result-clear">
+            <p class="txt-result">신선한 채소를 모두 수확했어!</p>
+            <div class="wrap-count">성공!</div>
+            <div class="obj-get"></div>
+            <div class="wrap-btn">
+                <button class="btn-endplay">활동 종료하기</button>
+            </div>
+        </div>
+
+        <!-- 결과 페이지 : 틀린 문제가 있을 때 -->
+        <div class="wrap-result result-wrong">
+            <p class="txt-result">힘내. 수확을 기다리는 채소가 얼마 남지 않았어.</p>
+            <div class="wrap-count">
+                10가지 채소 중 <div class="bold"><span class="count-num"></span>가지</div> 를 수확했어!
+            </div>
+            <div class="obj-get"></div>
+            <div class="wrap-btn">
+                <!-- .btn-replay : 재도전 버튼 -->
+                <button class="btn-replay">틀린 문제 다시 풀기</button>
+                <button class="btn-endplay">활동 종료하기</button>
+            </div>
+        </div>
+
+        <!-- 결과 페이지 : 재도전해서 정답을 모두 맞혔읕 때 -->
+        <div class="wrap-result result-reclear">
+            <p class="txt-result">신선한 채소를 모두 수확했어!</p>
+            <div class="wrap-count">재도전 성공!</div>
+            <div class="obj-get"></div>
+            <div class="wrap-btn">
+                <button class="btn-endplay">활동 종료하기</button>
+            </div>
+        </div>
+
+        <!-- 결과 페이지 : 재도전했는데도 모든 정답을 맞추는데에 실패했을 때 -->
+        <div class="wrap-result result-refail">
+            <p class="txt-result">힘내. 수확을 기다리는 채소가 얼마 남지 않았어.</p>
+            <div class="wrap-count">재도전 실패</div>
+            <div class="obj-get"></div>
+            <div class="wrap-btn">
+                <button class="btn-restart">처음부터 다시 하기</button>
+                <button class="btn-endplay">활동 종료하기</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-ui-touch-punch@0.2.3/jquery.ui.touch-punch.min.js"></script>
+    <script src="js/game01.js"></script>
+    <script src="js/data.game01.js"></script>
+</body>
+</html>

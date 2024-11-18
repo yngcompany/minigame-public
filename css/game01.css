@@ -1,0 +1,87 @@
+@charset "UTF-8"; 
+
+* {box-sizing:border-box; margin:0; padding:0; outline:unset;}
+html, body {width:100%; height:100%;}
+button {cursor:pointer;}
+ul, li {list-style:none;}
+#wrap {position:fixed; width:1280px; height:720px; left:50%; transform:translateX(-50%); transition:opacity 0.4s; background:#edeef8; overflow:hidden;}
+#main {position:relative; width:100%; height:100%; background:#f5ebeb; display:none;}
+#main.show {display:block;}
+#main .title {position:absolute; top:15%; left:50%; transform:translateX(-50%); text-align:center; width:480px; height:75px; background:#8e87a5; /*background:url(../img/s01/title.png) no-repeat / 100% 100%;*/}
+#main .title span {font-size:30px; font-weight:bold; line-height:70px; color:#FFF;}
+#main .wrap-btn {border:1px solid red; position:absolute; top:214px; left:50%; transform:translateX(-50%); display:flex; justify-content:center; align-items:center; width:100%; height:400px; gap:20px;}
+#main .wrap-btn button {width:240px; height:58px; background:#ffe600; transition:transform .5s;}
+#main .wrap-btn button span {display:block;}
+#main .wrap-btn button:hover {transform:scale(1.1);}
+
+/* 놀이 방법 가이드 화면 */
+.guide {width:100%; height:100%; position:fixed; top:0; left:0; z-index:101; opacity:0; background:rgba(8, 1, 29, 0.75); transform:translateY(100%); transition:transform .45s, opacity .45s; display:flex; justify-content:center; align-items:center;}
+.guide.show {transform:translateY(0%); opacity:1;}
+.guide .btn-close {position:absolute; z-index:inherit; right: 20px; top: 20px; width:40px; height:40px;}
+.guide .desc {font-size:16px; color:rgba(255,255,255,.65); font-weight:400; margin:12px 0; text-align:left;}
+.guide .desc.active {color:#FFF; font-weight:700;}
+
+/* 게임화면 */
+.wrap-farm {position:relative; width:100%; height:100%; background:#e1f5e7; display:none;}
+.wrap-farm.show {display:block;}
+.wrap-farm .btn-close {position:absolute; z-index:inherit; right: 20px; top: 20px; width:40px; height:40px;}
+
+.wrap-vegetables {display:flex; justify-content:space-between; align-items:center; width:100%; height:120px; background:#ecdbc1; position:absolute; z-index:200; top:100px; left:0; padding:0 40px;}
+.wrap-vegetables .vegetable {border:1px solid black; width:calc(100% - 80px); height:100%; position:relative;}
+.wrap-vegetables .obj {width:60px; height:60px; border-radius:50%; background:#f0cc00; position:absolute; z-index:202; top:50%; left:50%; transform:translate(-50%, -50%);}
+.wrap-vegetables .ground {width:100%; height:50px; background:#4b2020; position:absolute; z-index:203; left:0; bottom:0; box-shadow:0px -6px 6px rgba(0,0,0,.3);}
+.wrap-vegetables .plant {width:20px; height:120px; background:#086805; position:absolute; z-index:201; top:50%; left:50%; transform:translate(-50%, -50%);}
+
+.wrap-stone {position:relative; display:flex; justify-content:space-between; align-items:center; width:100%; height:80px; background:#35a4ee; position:absolute; z-index:200; top:340px; left:0; padding:0 40px;}
+.wrap-stone .stone {border:1px solid black; width:calc(100% - 80px); height:100%; position:relative;}
+.wrap-stone .stone .obj {width:100px; height:50px; border-radius:50%; background:#6b6b6b; position:absolute; z-index:202; top:-20px; left:50%; transform:translateX(-50%);}
+
+.wrap-farm .status {background:#FFF; width:80px; height:38px; border-radius:50%; font-size:14px; display:flex; justify-content:center; align-items:center; position:absolute; top:-60px; left:50%; transform:translateX(-50%); box-shadow:0 2px 12px rgba(0,0,0,.12); animation:upDown 2.5s ease infinite; display:none;}
+.wrap-farm .vegetable.show .status {display:flex;}
+.wrap-farm .vegetable.disabled {background:#b1b1b1;}
+
+/* 고양이 */
+.wrap-farm .cat {transition:left .75s ease; width:70px; height:110px; background:#5e1ef5; border-radius:50%; position:absolute; z-index:300; top:-100px; left:66px; box-shadow:0 4px 18px rgba(0,0,0,.5);}
+.wrap-farm .cat.jump {animation: catJump .75s ease;}
+.wrap-farm .cat.success:before {content:'성공!'; position:absolute; font-size:16px; color:#fff;}
+.wrap-farm .cat.fail:before {content:'실패!'; position:absolute; font-size:16px; color:#fff;}
+
+@keyframes upDown {
+    0% { transform: translate(-50%, 0); }
+    40% { transform: translate(-50%, -8px); }
+    80% { transform: translate(-50%, 0); }
+    100% { transform: translate(-50%, 0); }
+}
+@keyframes catJump {
+    0% { transform: translateY(0); }
+    40% { transform: translateY(-20%); }
+    100% { transform: translateY(0); }
+}
+
+.wrap-quiz {width:100%; height:260px; border:2px solid #0084f0; border-radius:24px; position:absolute; z-index:400; left:0; bottom:0; padding:10px; display:flex;}
+.wrap-quiz .area-question {position:relative; width:60%; height:100%; background:rgba(0, 0, 0, 0.2); border-radius:18px; margin-right:20px; overflow:hidden; display:flex; justify-content:center; align-items:center;}
+.wrap-quiz .area-question .badge-num {position:absolute; top:0; left:0; background:#7c0606; width:100px; height:40px; color:#FFF; font-weight:bold; border-radius:0 0 18px 0; display:flex; justify-content:center; align-items:center;}
+.wrap-quiz .area-question .question {font-size:32px; line-height:32px; text-align:center;}
+.wrap-quiz .area-question .timer {position:absolute; top:0; right:0; width:120px; height:50px; background:#333; font-size:20px; color:#FFF; font-weight:bold; border-radius:0 0 0 18px; display:flex; justify-content:center; align-items:center;}
+.wrap-quiz .wrap-btn {width:calc(40% - 20px); height:100%; background:#fff; border-radius:18px; display:flex; flex-direction:column; justify-content:center; padding:20px;}
+.wrap-quiz .wrap-btn button {height:40px; margin:10px 0;}
+
+/* 결과 화면 */
+.wrap-result {position:relative; width:100%; height:100%; border:5px solid #333; background:#f6f7f6; display:none;}
+.wrap-result.show {display:block;}
+.obj-get {position:relative; width:100%; height:340px; background:#f6f7f8; display:flex; gap:10px; margin-top:10px;}
+.obj-get span {display:block; width:60px; height:100px; border:1px solid red;}
+.obj-get span.carrot:before {content:'당근'; position:absolute; font-size:14px;}
+.obj-get span.tomato:before {content:'토마토'; position:absolute; font-size:14px;}
+.obj-get span.onion:before {content:'양파'; position:absolute; font-size:14px;}
+.obj-get span.cucumber:before {content:'오이'; position:absolute; font-size:14px;}
+.obj-get span.radish:before {content:'무'; position:absolute; font-size:14px;}
+.obj-get span.cabbage:before {content:'배추'; position:absolute; font-size:14px;}
+.obj-get span.eggplant:before {content:'가지'; position:absolute; font-size:14px;}
+.obj-get span.beet:before {content:'비트'; position:absolute; font-size:14px;}
+.obj-get span.paprika:before {content:'파프리카'; position:absolute; font-size:14px;}
+.obj-get span.pepper:before {content:'고추'; position:absolute; font-size:14px;}
+.wrap-result .wrap-btn {border:1px solid red; position:absolute; top:214px; left:50%; transform:translateX(-50%); display:flex; justify-content:center; align-items:center; width:100%; height:400px; gap:20px;}
+.wrap-result .wrap-btn button {width:240px; height:58px; background:#03990b; transition:transform .5s; color:#fff;}
+.wrap-result .wrap-btn button span {display:block;}
+.wrap-result .wrap-btn button:hover {transform:scale(1.1);}
